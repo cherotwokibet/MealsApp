@@ -27,6 +27,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "MealsApp is a mobile app for viewing recipes, you can also filter the recipes\nand add some as favorites. Built it for learning purposes.",
+    "githubUrl": "https://github.com/cherotwokibet/MealsApp"
   }
 }
