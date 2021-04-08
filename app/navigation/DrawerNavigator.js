@@ -1,6 +1,7 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
+import { Ionicons } from "@expo/vector-icons";
 
 import FiltersNavigator from './FiltersNavigator';
 import FavoritesNavigator from './FavoritesNavigator';
@@ -20,9 +21,50 @@ const DrawerNavigator = ()=>(
                 }
             }}
         >
-            <Drawer.Screen name='Home' component={TabNavigator} />
-            <Drawer.Screen name='Filters' component={FiltersNavigator} />
-            <Drawer.Screen name='Favorites' component={FavoritesNavigator} />
+            <Drawer.Screen 
+                name='Home' 
+                component={TabNavigator}
+                options={({navigation})=>({
+                    // drawerLabel:'Home',
+                    drawerIcon:({color,size})=>(
+                        <Ionicons
+                            name='md-home'
+                            size={size}
+                            color={color}
+                            onPress={()=>{
+                                navigation.navigate('Categories')
+                            }}
+                        />
+                    ),
+                    drawerLabel:'Home'
+                })} 
+            />
+            <Drawer.Screen 
+                name='Filters' 
+                component={FiltersNavigator}
+                options={()=>({
+                    drawerIcon:({size,color})=>(
+                        <Ionicons
+                            name='md-filter'
+                            size={size}
+                            color={color}
+                        />
+                    )
+                })} 
+            />
+            <Drawer.Screen 
+                name='Favorites' 
+                component={FavoritesNavigator}
+                options={()=>({
+                    drawerIcon:({size,color})=>(
+                        <Ionicons
+                            name='md-star'
+                            size={size}
+                            color={color}
+                        />
+                    )
+                })} 
+            />
         </Drawer.Navigator>
         
     </NavigationContainer>

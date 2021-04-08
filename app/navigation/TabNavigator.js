@@ -13,6 +13,7 @@ const Tab = createMaterialBottomTabNavigator();
 
 const TabNavigator = () => (
     <Tab.Navigator
+        initialRouteName='Categories'
         tabBarOptions={{
             activeTintColor:colors.accent
         }}
@@ -26,12 +27,19 @@ const TabNavigator = () => (
         <Tab.Screen
             name='Meals'
             component={MealsNavigator}
-            options={{
+            options={({navigation})=>({
                 tabBarLabel:'Home',
-                tabBarIcon:({color}) => (
-                    <Ionicons name='md-restaurant' size={25} color={color}/>
+                tabBarIcon:({color})=>(
+                    <Ionicons
+                        name='md-restaurant'
+                        size={25}
+                        color={color}
+                        onPress={()=>{
+                            navigation.navigate('Categories')
+                        }}
+                    />
                 )
-            }}
+            })}
         />
         <Tab.Screen
             name='Favorites'
